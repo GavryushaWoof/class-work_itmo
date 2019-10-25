@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Название группы элементов</legend>
+            <label for="text">Однострочное поле</label>
+            <input type="text" id="text">
+            <label>Однострочное поле
+            <input type="text" value="ads" minlength="5" maxlength="10">
+            </label>
+            <p>
+                <label>Почта:
+                    <input type="email">
+                </label>
+            </p>
+            <p>
+                <label>Пароль:
+                    <input type="password" required placeholder="Введите пароль">
+                </label>
+            </p>
+            <p>
+                <label>Url:
+                    <input type="url">
+                </label>
+            </p>
+            <p>
+                <label>Поиск:
+                    <input type="search" disabled value="какой-то текст">
+                </label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Загрузить</legend>
+            <p>
+                <input type="file" multiple accept="image/*" size="150">
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Поля числовые</legend>
+            <p>
+                <input type="number" min="0" max="100" step="2">
+            </p>
+            <p>
+                <input type="range" value="20" min="0" max="100" step="2">
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Чекбоксы и радиокнопки</legend>
+            <p>
+                <label>Кусь <input type="checkbox" checked></label>
+            </p>
+            <p>
+                <label>Кусь 2 <input name="answer" type="radio" checked></label>
+            </p>
+            <p>
+                <label>Кусь 3 <input name="answer" type="radio"></label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Дата и время</legend>
+            <p>
+                <label><input type="time" max="22:59">Выбор времени</label>
+            </p>
+            <p>
+                <label><input type="date">Выбор дня</label>
+            </p>
+            <p>
+                <label><input type="datetime-local">Выбор дня и времени</label>
+            </p>
+            <p>
+                <label><input type="month">Выбор месяца и года</label>
+            </p>
+            <p>
+                <label><input type="week">Выбор недели и года</label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Выбор цвета и скрытый input</legend>
+            <p>
+                <input type="color">
+            </p>
+            <p>
+                <input type="hidden" name="somedata" value="info">
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Кнопки (тег button)</legend>
+            <p>
+                <input type="submit" value="Отправить">
+            </p>
+            <p>
+                <input type="reset" value="Сброс">
+            </p>
+            <p>
+                <input type="button" value="Просто кнопка">
+            </p>
+            <p>
+                <input type="image" src="Charmander2.jpg" alt="Альтернативный текст">
+            </p>
+            <p>
+                <button type="submit">отправить</button>
+                <button type="reset">Сброс</button>
+                <button type="button">Просто кнопка</button>
+                <button type="menu">меню</button>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Многострочный</legend>
+            <p>
+                <textarea cols="30" rows="10"></textarea>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Списки</legend>
+            <p>
+                <select name="" id="" multiple>
+                    <optgroup label="Кусь" disabled>
+                        <option value="12315">УльтраКусь</option>
+                        <option >МегКусь</option>
+                    </optgroup>
+                    <option>Рык</option>
+                    <option>Гав</option>
+                    <option  selected>Лизь</option>
+                </select>
+            </p>
+        </fieldset>
+    </form>
+</body>
+
+</html>
