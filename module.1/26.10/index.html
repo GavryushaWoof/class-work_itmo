@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Изучаем HTML</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        h2 {
+            color: blue;
+        }
+        
+        h4 {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Не покраситться</p>
+    <h1 style="color: brown;">Встраивание</h1>
+    <h2>Вложение</h2>
+    <h3>Связывание</h3>
+    <h4 style="color: brown;">Приоритет</h4>
+    <p class="center-text">Текст</p>
+    <div id="container">
+
+    </div>
+    <div>
+        Текст
+        <p>
+            <em>Дочерний селектор</em>
+        </p>
+        <p>
+            <span class="red">
+                <a href="#">пример</a>
+            </span>
+        </p>
+
+        <p class="red">
+            <a href="#">пример</a>
+
+        </p>
+    </div>
+    <p>
+        <em>Дочерний селектор</em>
+    </p>
+    <nav>
+        <ul>
+            <li>Вар 1</li>
+            <li>Вар 2</li>
+            <li>Вар 3</li>
+        </ul>
+    </nav>
+    <p>текст <b>текст</b> текст <i>текст</i></p>
+    <p id="k">текст текст текст <i>текст</i></p>
+    <p id="elem" class="elem-class">Специфичность</p>
+</body>
+
+</html>

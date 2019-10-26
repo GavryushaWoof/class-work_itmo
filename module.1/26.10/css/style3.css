@@ -1,0 +1,65 @@
+.div {
+    margin-top: 30px;
+    margin-right: 15px;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    margin: 15px;
+    /* top-bottom left-right */
+    margin: 15px 30px;
+    /* top  left-right bottom */
+    margin: 15px 30px 10px;
+    /* top right bottom left */
+    margin: 30px 15px 40px 20px;
+    border: 1px solid brown;
+    border-radius: 10px 20px;
+    border-top: 1px solid yellowgreen;
+    border-right: 2px thin gold;
+    border-left: 4px solid salmon;
+    border-bottom: 5px thick aquamarine;
+    border-left-color: blue;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 20px;
+}
+
+.p {
+    margin-top: -40px;
+    padding-top: 30px;
+    padding-right: 15px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding: 15px;
+    /* top-bottom left-right */
+    padding: 15px 30px;
+    /* top  left-right bottom */
+    padding: 15px 30px 10px;
+    /* top right bottom left */
+    padding: 30px 15px 40px 20px;
+}
+
+.temp {
+    height: 100px;
+    width: 100px;
+    border: 1px solid springgreen;
+    /* box-sizing: content-box; */
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.span {
+    display: inline-block;
+    /* display: inline; */
+    /* display: block; */
+    height: 50px;
+    width: 50px;
+    border: 1px solid springgreen;
+}
+
+nav li {
+    list-style: none;
+    display: inline-block;
+    margin: 10px;
+}
+
+nav ul {
+    padding-inline-start: 0px;
+}
