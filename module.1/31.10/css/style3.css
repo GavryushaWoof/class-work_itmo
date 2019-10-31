@@ -1,0 +1,51 @@
+.container {
+    height: 100px;
+    width: 100px;
+    background-color: firebrick;
+}
+
+.container:hover {
+    background-color: greenyellow;
+}
+
+.container:target {
+    display: none;
+}
+
+a:hover {
+    background-color: indianred;
+}
+
+a:visited {
+    color: khaki;
+}
+
+a:link {
+    color: lightcoral;
+}
+
+a:active {
+    color: lightseagreen;
+}
+
+.submenu {
+    display: none;
+}
+
+li:hover>.submenu {
+    display: block;
+}
+
+.form {
+    display: none;
+}
+
+.form:target {
+    display: block;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    bottom: 200px;
+    right: 200px;
+    background-color: limegreen;
+}

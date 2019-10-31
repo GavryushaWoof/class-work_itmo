@@ -1,0 +1,38 @@
+.flex-row {
+    display: flex;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-grow-2 {
+    flex-grow: 2;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.big {
+    flex-basis: 500px;
+    /* создает размер элемента */
+}
+
+.flex-shrink-1 {
+    flex-shrink: 1;
+}
+
+.flex-shrink-2 {
+    flex-shrink: 2;
+}
+
+.order {
+    background-color: brown;
+    order: 1;
+}

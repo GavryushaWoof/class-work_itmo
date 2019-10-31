@@ -1,0 +1,81 @@
+.flex {
+    display: flex;
+    height: 100px;
+    /* Выравнивание по горизонтали  */
+    /* значение поумолчанию */
+    /* по левому */
+    justify-content: flex-start;
+    /* по правому */
+    justify-content: flex-end;
+    /* по центру */
+    justify-content: center;
+    /* одинаковые отступы */
+    justify-content: space-around;
+    /* без левого и без правого отступа */
+    justify-content: space-between;
+}
+
+.flex-1 {
+    display: flex;
+    justify-content: space-between;
+    /* поведение поумолчанию  элементы растянулись по самому большому*/
+    align-items: stretch;
+    /* выравнивание по верхнему краю текста */
+    align-items: flex-start;
+    /* выравнивание по нижниму краю текста */
+    align-items: flex-end;
+    /* элементы выравниваюстся по базово линии */
+    align-items: baseline;
+}
+
+.flex-2 {
+    display: flex;
+    /* значение по умолчанию */
+    flex-direction: row;
+    /* порядок наоборот */
+    flex-direction: row-reverse;
+    /* по вертикале */
+    flex-direction: column;
+    /* обратный порядок */
+    flex-direction: column-reverse;
+}
+
+.flex-3 {
+    display: flex;
+    /* без переноса */
+    flex-wrap: nowrap;
+    /* элементы которые не опместятся будут пренесены на другую строчку */
+    flex-wrap: wrap;
+    /* порядок наоборот */
+    width: 250px;
+    flex-wrap: wrap-reverse;
+}
+
+.flex-4 {
+    display: flex;
+    width: 250px;
+    height: 500px;
+    flex-wrap: wrap;
+    /* по умолчанию растягиваются по вертикале */
+    align-content: stretch;
+    /* выравнивание по верхнему краю */
+    align-content: flex-start;
+    /* Выравнивание по нижнему краю */
+    align-content: flex-end;
+    /* по центру */
+    align-content: center;
+    /* равномерно (с равными отступами) */
+    align-content: space-around;
+    /* без верних и нижних */
+    align-content: space-between;
+    /* равномерное выравнивание */
+    align-content: space-evenly;
+}
+
+p {
+    background-color: gold;
+}
+
+div {
+    background-color: greenyellow;
+}
