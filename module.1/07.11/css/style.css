@@ -1,0 +1,98 @@
+button {
+    background-color: blueviolet;
+    border: 0;
+    color: cornsilk;
+    font-size: 16px;
+    padding: 5px 16px;
+    transition-property: background-color, color, border-radius;
+    transition-duration: .5s;
+    transition-timing-function: linear;
+    /* transition: all .5s linear .1s; */
+}
+
+button:hover {
+    background-color: cyan;
+    color: darkblue;
+    border-radius: 16px;
+}
+
+.rotate {
+    height: 200px;
+    width: 200px;
+    background-color: darkgrey;
+    margin: 50px;
+    transform: rotate(30deg);
+    transform-origin: top left;
+}
+
+.translate {
+    height: 200px;
+    width: 200px;
+    background-color: lightcoral;
+    /* transform: translate(40px, 20px); */
+    transition: transform .5s linear;
+}
+
+.translate:hover {
+    transform: translate(40px, 20px);
+}
+
+.scale {
+    height: 200px;
+    width: 200px;
+    background-color: lightgreen;
+    transform: scale(1);
+}
+
+.skew {
+    height: 200px;
+    width: 200px;
+    background-color: lightseagreen;
+    transform: skew(15deg);
+    margin: 25px;
+}
+
+.transform-3d {
+    height: 200px;
+    width: 200px;
+    background-color: khaki;
+    transform: perspective(400px) rotateY(30deg) rotateX(15deg);
+}
+
+.some-container {
+    perspective: 100px;
+    perspective-origin: 50% 50%;
+}
+
+.some-container>div {
+    height: 200px;
+    width: 200px;
+    background-color: forestgreen;
+    display: inline-block;
+    transform: rotateX(15deg);
+}
+
+.box {
+    height: 200px;
+    width: 200px;
+    background-color: rosybrown;
+    animation: over-and-back .8s linear infinite;
+    animation-direction: reverse;
+}
+
+@keyframes over-and-back {
+    0% {
+        background-color: firebrick;
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(50px, 0) rotateZ(30deg) perspective(50px) skew(80deg);
+    }
+    80% {
+        transform: translate(0, 50px) rotateZ(-30deg) perspective(50px) skew(80deg);
+    }
+    100% {
+        transform: translate(50px, 0);
+        background-color: aqua;
+    }
+}
