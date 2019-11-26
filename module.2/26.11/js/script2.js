@@ -142,3 +142,9 @@ console.log(al);
 console.log(bl);
 console.log(dl);
 console.log(f);
+
+let x1 = 23,
+    x2 = 32;
+[x2, x1] = [x1, x2];
+console.log(x1);
+console.log(x2);
