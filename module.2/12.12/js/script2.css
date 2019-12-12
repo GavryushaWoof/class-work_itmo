@@ -1,0 +1,11 @@
+#tooltip_container {
+    color: #fff;
+    position: absolute;
+    padding: 20 px;
+    max-width: 250 px;
+    background-color: rgba(0, 0, 0, .85);
+    -webkit-border-radius: 12 px;
+    -moz-border-radius: 12 px;
+    border-radius: 12 px;
+    display: none;
+}
