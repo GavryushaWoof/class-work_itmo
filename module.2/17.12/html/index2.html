@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <svg height="200" width="200">
+        <circle cx="60" cy="60" r="50"/>
+        <path d="M0,0m25,25a25,-25 0 0,1 0,-50"></path>
+        <text x="100" y="100">Привет мир!!</text>
+   </svg>
+    <script>
+        let arr = ['gsgs', 'gsssg', 'hgf', 'g'];
+        let arr2 = arr.filter(function(str) {
+            return str.length >= 5;
+        });
+        console.log(arr2);
+
+        let arrNum = [12, -10, 35];
+        let arrNum2 = arrNum.filter(function(num) {
+            return num > 0;
+
+        }).map(function(num) {
+            return num ** 0.5;
+        });
+        console.log(arrNum2);
+
+        let arrNew = arrNum.reduce(function(prev, curr) {
+            return prev + curr;
+        }, 0);
+        console.log(arrNew);
+    </script>
+</body>
+
+</html>
