@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <button v-on:click="increase(3, $event)">+</button>
+        <button @click="decrease(2, $event)">-</button>
+        <div>{{ counter }}</div>
+        <button v-on:click="age++">+</button>
+        <button @click="age--">-</button>
+        <div>{{ age }}</div>
+        <div>{{cheakAge}}</div> -->
+        <!-- <button @click=";a++">+{{a}}</button>
+        <button @click=";b++">+{{b}}</button>
+        <div>Площадь: {{ area }} {{c}}</div> -->
+        <!-- <p v-if='a'>first</p>
+        <p v-else>second</p>
+        <button v-on:click='a=!a'>
+            {{a ? 'К параграфу 2' : 'К параграфу 1'}}
+        </button> -->
+        <div v-on:contextmenu.prevent='onHelp'>
+            <span>вызови на мне контекстное меняю</span>
+            <span v-show='visible'>справочная информация</span>
+            <a href="#" v-show="visible" v-on:click.prevent='visible=false'>скрыть</a>
+        </div>
+
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                visible: false,
+                // a: true,
+                // a: 5,
+                // b: 3,
+                // c: 12
+                // counter: 0,
+                // age: 18,
+            },
+            methods: {
+                onHelp() {
+                    this.visible = true;
+                }
+            },
+            // computed: {
+            //     area() {
+            //         return this.a * this.b;
+            //     }
+            //     cheakAge() {
+            //         console.log('checkAge!!')
+            //         if (this.age > 17) {
+            //             return 'доступ разршен';
+            //         } else {
+            //             return 'доступ закрыт';
+            //         }
+            //     }
+            // },
+            // methods: {
+            //     increase: function(val, e) {
+            //         console.log(e);
+            //         this.counter += val;
+            //     },
+            //     decrease(val, e) {
+            //         console.log(e);
+            //         if (this.counter > val)
+            //             this.counter -= val;
+            // },
+            // },
+            // watch: {
+            //     a: function(newVal, oldVal) {
+            //         console.log('a:', newVal, oldVal);
+            //         this.c = newVal;
+            //     },
+            //     b(newVal, oldVal) {
+            //         console.log('b:', newVal, oldVal);
+
+            //     },
+            //     area: function(newVal, oldVal) {
+            //         console.log('area:', newVal, oldVal);
+
+            //     }
+            // },
+            // beforeUpdate() {
+            //     console.log('все данные измениись')
+            // }
+        });
+    </script>
+</body>
+
+</html>
