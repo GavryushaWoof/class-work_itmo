@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <label>Введите коментарий</label>
+        <textarea v-model="message"></textarea>
+        <br>
+        <div>
+            <h3>коментарий</h3>
+            <p style="white-space: pre-line;">{{message}}</p>
+        </div> -->
+        <!-- <input id='ch_box' type="checkbox" v-model="checked" true-value="да" false-value="нет"> -->
+        <!-- <input id='ch_box' type="checkbox" value='No' v-model="selectedUser">
+        <label for="ch_box">No</label>
+        <input id='ch_box2' type="checkbox" value='yes' v-model="selectedUser">
+        <label for="ch_box2">yes</label>
+        <input id='ch_box3' type="checkbox" value='tr' v-model="selectedUser">
+        <label for="ch_box3">tr</label>
+        <input id='ch_box4' type="checkbox" value='br' v-model="selectedUser">
+        <label for="ch_box4">br</label>
+        <span>{{selectedUser}}</span> -->
+        <!-- <input type="radio" v-bind:value="{name: 'Tom', age: 18}" v-model="selectedUser"> Tom
+        </label>
+        <label>
+    <input type="radio" 
+        v-bind:value="{name: 'Bob', age: 23}" 
+        v-model="selectedUser"            
+    >
+    Bob
+</label>
+        <label>
+    <input type="radio" 
+        v-bind:value="{name: 'Sasha', age: 32}" 
+        v-model="selectedUser"
+    >
+    Sasha
+</label>
+        <br>
+        <span>{{selectedUser.name}} - {{selectedUser.age}}</span>
+    </div> -->
+        <!-- <select v-model="selectedUser">
+            <option v-bind:value="metree">м</option>
+            <option :value="kilogramm">кг</option>
+            <option :value="second">с</option>
+        </select>
+        <span>{{selectedUser}}</span> -->
+
+        <!-- </div> -->
+        <!-- <ul> -->
+        <!-- <li v-for="(user, index) in users">
+                <p v-for='(value, key) in user'>{{key}}:{{value}}</p>
+                <p>{{user.age}}</p>
+            </li> -->
+        <!-- <template v-for="user in users">
+                <li>user.name</li>
+                <li>user.age</li>
+            </template> -->
+        <!-- </ul> -->
+        <!-- <template v-for="user in users">
+            <label>
+                <input 
+                    type="radio" 
+                    :value="user"
+                    v-model="selectedUsers"
+                >
+            {{user.name}}</label>
+        </template> -->
+
+        <!-- <ul>
+            <li v-for="user in selectedUsers">
+                {{user.name}} - {{user.age}}
+            </li>
+        </ul> -->
+        <!-- <select v-model="selectedUsers" multiple>
+            <option 
+                v-for="user in users"
+                :value="user"   
+            >{{user.name}}</option>
+        </select>
+
+        <ul>
+            <li v-for="user in selectedUsers">
+                {{user.name}} - {{user.age}}
+            </li>
+        </ul> -->
+        <!-- <input type="text" v-model.lazy.number='age'>
+        <span>{{age}}</span> -->
+        <ul>
+            <li v-for='num in arr' :key="num">{{num}}</li>
+        </ul>
+        <button @click='sort'>пересортировать</button>
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                arr: [1, 2, 3],
+                name: '',
+                age: 10,
+                message: ''
+                    // users: [{
+                    //         name: 'Sasha',
+                    //         age: 18
+                    //     }, {
+                    //         name: 'Tom',
+                    //         age: 25
+                    //     }, {
+                    //         name: 'Petr',
+                    //         age: 32
+                    //     }
+
+                // ],
+                // selectedUsers: []
+                // message: 'коментарий'
+                // checked: 'да'
+                // selectedUser: []
+                // selectedUser: '',
+                // metree: "метр",
+                // kilogramm: "килограм",
+                // second: "секунда",
+                // variant1: "Tom",
+                // variant2: "Sasha",
+                // variant3: "Petr"
+            },
+            methods: {
+                sort() {
+                    this.arr.sort(() => {
+                        return Math.random() * 2 - 1;
+                    })
+                }
+                // factorial(n) {
+                //     let res = 1;
+                //     for (let i = 1; i <= n; i++) {
+                //         res *= i;
+                //     }
+                //     return res
+                // }
+                // 
+            }
+        });
+    </script>
+</body>
+
+</html>
