@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="query">
+        <ul>
+            <li v-for="(phone, index) in filtredPhones">
+                <p>
+                    {{ phone.name }} - {{phone.price}}
+                </p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                query: '',
+                phones: [{
+                    name: 'iPhone 10',
+                    price: 123
+                }, {
+                    name: 'iPhone 11',
+                    price: 1230
+                }, {
+                    name: 'iPhone 9',
+                    price: 999
+                }, {
+                    name: 'iPhone 8',
+                    price: 1111
+                }]
+            },
+            computed: {
+                filtredPhones() {
+                    let arr = [];
+                    let regExp = new RegExp(".*" + this.query + ".*", "i")
+                    for (let i = 0; i < this.phones.length; i++) {
+                        if (regExp.test(this.phones[i].name)) {
+                            arr.push(this.phones[i])
+                        }
+                    }
+                    return arr;
+                }
+
+
+            }
+
+        });
+    </script>
+</body>
+
+</html>
