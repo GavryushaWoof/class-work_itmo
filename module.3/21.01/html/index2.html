@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <div v-for="product in products">{{product.name}}</div>
+        </div>
+    </div>
+    </div>
+    <script>
+        const storeVuex = new Vuex.Store({
+            state: {
+                products: [{
+                    id: 1,
+                    name: 'name1',
+                    type: 'A'
+                }, {
+                    id: 2,
+                    name: 'name2',
+                    type: 'B'
+                }, {
+                    id: 3,
+                    name: 'name3',
+                    type: 'B'
+                }, {
+                    id: 4,
+                    name: 'name4',
+                    type: 'A'
+                }, ]
+            },
+            getters: {
+
+                productType(state, getters) {
+                    return function(type) {
+                        return state.products.filter(function(prod) {
+                            return prod.type == type;
+                        })
+                    }
+                }
+                //  state.products.filter(function(prod) {
+                //     return prod.type == 'A';
+            }
+
+        });
+
+
+        let app = new Vue({
+            el: "#app",
+            store: storeVuex,
+            data: {
+                type: 'A'
+            },
+            // computed: Vuex.mapState(['products']),
+            components: {
+
+            },
+            computed: {
+                products: function() {
+                        return this.$store.getters.productType(this.type);
+                        // return this.$store.getters.productTypeA;
+                    }
+                    // products() {
+                    //     return this.$store.state.products.filter(function(prod) {
+                    //         return prod.type = 'A';
+                    //     });
+                    // }
+            },
+            methods: {
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>

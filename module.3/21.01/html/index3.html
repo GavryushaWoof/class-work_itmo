@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <div v-for="product in productTypeA">{{product.name}}</div>
+        </div>
+    </div>
+    <script>
+        const storeVuex = new Vuex.Store({
+            state: {
+                products: [{
+                    id: 1,
+                    name: 'name1',
+                    type: 'A'
+                }, {
+                    id: 2,
+                    name: 'name2',
+                    type: 'B'
+                }, {
+                    id: 3,
+                    name: 'name3',
+                    type: 'B'
+                }, {
+                    id: 4,
+                    name: 'name4',
+                    type: 'A'
+                }, ]
+            },
+            getters: {
+                productTypeA(state, getters) {
+                    return state.products.filter(function(prod) {
+                        return prod.type == 'A';
+                    })
+                },
+                productTypeB(state, getters) {
+                    return state.products.filter(function(prod) {
+                        return prod.type == 'B';
+                    })
+                }
+            }
+        });
+
+
+        let app = new Vue({
+            el: "#app",
+            data: {
+                type: 'A'
+            },
+            store: storeVuex,
+            computed: {
+                // ...Vuex.mapGetters(['productTypeA'])
+                ...Vuex.mapGetters({
+                    'products': 'productTypeA'
+                }),
+            }
+        });
+    </script>
+
+</body>
+
+</html>
