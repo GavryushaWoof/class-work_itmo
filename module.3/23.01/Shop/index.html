@@ -1,0 +1,230 @@
+<html>
+    <head>
+        <meta charset="utf-8"></meta>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="js/products.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <shop-header :sitename="sitename" :cart-item-count="cartItemCount" @toggle-form="showCheckout"></shop-header>
+            <main>
+                <div>
+                    <div v-if="showProduct">
+                        <product v-for="product in sortedProducts"
+                            :key="product.id" 
+                            :product="product" 
+                            :cart-count-fn="cartCount"
+                            @add-to-cart="addToCart"></product>                            
+                    </div>
+                    <div v-else>
+                        <checkout-form></checkout-form>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script>
+            const Header = {
+                template: `<header>
+                    <h1>{{sitename}}</h1>
+                    <div>
+                        <button v-on:click="showCheckout"><span>{{cartItemCount}}</span> Оформление заказа</button>
+                    </div>
+                </header>`,
+                props:['cartItemCount', 'sitename'],
+                methods:{
+                    showCheckout: function(){
+                        this.$emit("toggle-form");
+                    }
+                }
+            };
+            
+            const Product = {
+                template: `<div class="row mb-3">
+                    <div>
+                        <figure>
+                            <img v-bind:src="product.image"> 
+                        </figure>
+                    </div>
+                    <div>
+                        <h1 v-text="product.title"></h1>
+                        <p v-html="product.description"><p>
+                        <p>Автор: {{product.author}}</p>
+                        <p>Издательство: {{product.publishing}}<p>
+                        <p>Год: {{product.year}}</p>
+                        <p>Количество страниц: {{product.pages}}</p>
+                        <p>Стоимость: {{product.price | formatPrice}}</p>
+                        <button v-on:click="addToCart(product)" v-if="canAddToCart(product)">Добавить в корзину</button>
+                        <button v-else disabled>Добавить в корзину</button>
+                        <span v-if="product.availableInventory - cartCountFn(product.id) === 0">Нет в наличии</span>
+                        <span v-else-if="product.availableInventory - cartCountFn(product.id) < 5">Осталось только {{product.availableInventory - cartCountFn(product.id)}}</span>
+                        <span v-else>Осталось много</span>
+                        <span v-for="(n, index) in 5" v-bind:key="index">{{checkRating(n, product)}}</span>
+                    </div>
+                </div>`,
+                props:['product', 'cartCountFn'],
+                methods:{
+                    addToCart: function(product){
+                        this.$emit("add-to-cart", product.id);
+                    },
+                    canAddToCart: function(product){
+                        return product.availableInventory > this.cartCountFn(product.id);
+                    },
+                    checkRating: function(n, product){
+                        return (product.rating - n >= 0)? String.fromCharCode(9733): String.fromCharCode(9734);
+                    }
+                },
+                filters: {
+                    formatPrice: function(val){
+                        if(!parseInt(val)) return '';
+                        let arr = val.toString().split("");
+                        let index = 3;
+                        while(arr.length > index){
+                            arr.splice(arr.length - index, 0, " ");
+                            index += 4;
+                        }
+                        return arr.join("") + ' ' + String.fromCharCode(8381);
+                    }
+                }            
+            };
+            
+            const CheckoutForm = {
+                template: `<div>
+                    <div>
+                        <p>Оформление заказа</p>
+                    </div>
+                    <div>
+                        <strong>Имя:</strong>
+                        <input v-model.trim="order.firstname">
+                    </div>
+                    <div>
+                        <strong>Фамилия:</strong>
+                        <input v-model.trim="order.lastname">
+                    </div>
+                    <div>
+                        <strong>Адрес:</strong>
+                    </div>
+                    <div>
+                        <input v-model.trim="order.address">
+                    </div>
+                    <div>
+                        <strong>Город:</strong>
+                    </div>
+                    <div>
+                        <input v-model.trim="order.city">
+                    </div>
+                    <div>
+                        <strong>Страна:</strong>
+                        <select v-model="order.country">
+                            <option v-for="country in order.countries">{{country}}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <strong>Почтовый индекс</strong>
+                        <input v-model.number="order.zip">
+                    </div>                            
+                    <div>
+                        <label><input type="checkbox" v-model="order.gift" true-value="да" false-value="нет">Подарочная упаковка</label>
+                    </div>
+                    <div>
+                        <label><input type="radio" value="домашний адрес" v-model="order.type_address">Дом</label>
+                        <label><input type="radio" value="рабочий адрес" v-model="order.type_address">Работа</label>
+                    </div>
+                    <div>
+                        <button type="submit" v-on:click="submitForm">Заказать</button>
+                    </div>
+                    <div>
+                        <pre>
+                            Имя: {{order.firstname}}
+                            Фамилия: {{order.lastname}}
+                            Адрес: {{order.address}}
+                            Город: {{order.city}}
+                            Страна: {{order.country}}
+                            Почтовый индекс: {{order.zip}}
+                            Подарочная упаковка: {{order.gift}}
+                            Тип адрес: {{order.type_address}}
+                        </pre>
+                    </div>
+                </div>`,
+                data: function(){
+                    return {
+                        order: {
+                            firstname: '',
+                            lastname: '',
+                            address: '',
+                            city: '',
+                            country: '',
+                            gift: 'нет',
+                            type_address: 'домашний адрес',
+                            countries: ['Россия', 'Белоруссия', 'Казахстан']
+                        }
+                    };
+                },
+                methods: {
+                    submitForm: function(){
+                        alert("Заказ оформлен");
+                    }
+                }
+            }
+        
+        
+            let webStore = new Vue({
+                el: '#app',
+                data: {
+                    sitename: 'Магазин 404 - найдётся всё для IT-шников!',
+                    products:[],
+                    cart:[],
+                    showProduct: true
+                },
+                components: {
+                    'shop-header': Header,
+                    'product': Product,
+                    'checkout-form': CheckoutForm
+                },
+                methods:{
+                    addToCart: function(id){
+                        this.cart.push(id);
+                    },
+                    showCheckout: function(){
+                        this.showProduct = !this.showProduct;
+                    },
+                    cartCount: function(id){
+                        let itemCount = 0;
+                        
+                        for(let i = 0; i < this.cart.length; i++)
+                            if(this.cart[i] === id)
+                                itemCount++;
+                                
+                        return itemCount;                        
+                    }
+                },
+                computed: {
+                    cartItemCount: function(){
+                        return String.fromCharCode(55357, 57042) + '' + (this.cart.length || '') + ' ';
+                    },
+                    sortedProducts: function(){
+                        if(this.products.length > 0) {
+                            let productsArray = this.products.slice(0);
+                            
+                            function compare(a, b){
+                                let titleA = a.title.toLowerCase(),
+                                    titleB = b.title.toLowerCase()
+                                if(titleA > titleB)
+                                    return 1;
+                                if (titleA < titleB) {
+                                    return -1; 
+                                }
+                                return 0;
+                            }
+                            
+                            return productsArray.sort(compare);
+                        }                        
+                    }
+                },
+                created: function(){
+                    //Место для получения данных от сервера
+                    this.products = window.products;
+                }
+            });            
+        </script>
+    </body>
+</html>
