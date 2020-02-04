@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script></script>
+    <!-- кароч тут должно быть jqvery -->
+</head>
+
+<body>
+    <form action="/test/" enctype="application/x-www-form-urlencoded" method="GET">
+        <input type="text" name="text" value="sample">
+        <input type="text" name="text" value="Привет">
+        <button type="submit">Отправить</button>
+    </form>
+    <button id='btn'>Отправить</button>
+    <script>
+        let test_form = document.getElementById('test_form');
+        test_form / addEventListener('simbit', function(e) {
+            e.preventDefault();
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/test/?test1', true);
+            xhr.send();
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState != 4) return;
+
+                if (xhr.status != 200) {
+                    console.log(xhr.status + ' ' + xhr.statusTest1);
+                } else {
+                    console.log(xhr.responseText);
+                }
+            }
+        });
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click', function() {
+            $.ajax({
+                type: 'GET',
+                url: 'https://xml.meteoservice.ru/export/gismeteo/point/69.xml',
+                success: function(response) {
+                    alert(response); //ответ от сервера в response
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
