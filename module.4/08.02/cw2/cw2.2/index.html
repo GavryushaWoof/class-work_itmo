@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="mustache.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var data = {
+            "person": true
+        };
+
+        var template = "{{#person}}" +
+            "Персональная информация" +
+            "{{/person}}" +
+            "{{^person}}" +
+            "Ничего нету =(" +
+            "{{/person}}";
+
+        var result = Mustache.render(template, data);
+
+        document.body.innerHTML = result;
+
+
+        /*
+        var data = {
+            "person": [{
+                name: "sasha",
+                age: 18
+            }, {
+                name: "petr",
+                age: 22
+            }, {
+                name: "ivan",
+                age: 32
+            }, ]
+        };
+
+        var template = "{{#person}}" +
+            "<p>{{name}}-{{age}}</p>" +
+            "{{/person}}";
+
+        var result = Mustache.render(template, data);
+
+        document.body.innerHTML = result;
+        */
+
+
+        /*var data = {
+            "person": "true"
+        };
+
+        var template = "{{#person}}" +
+            "Персональная информация" +
+            "{{/person}}";
+            */
+
+        /* var data = {
+             album: {
+                 title: 'Всем привет',
+                 artist: 'Алла Борисовна'
+             }
+         };
+
+         var template = "{{album.title}}!!!. {{album.artist}} любит вас.";
+
+         var result = Mustache.render(template, data);
+
+         console.log(result);
+         */
+    </script>
+</body>
+
+</html>
