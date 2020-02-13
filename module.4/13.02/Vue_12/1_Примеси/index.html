@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <my-comp1></my-comp1>
+    <my-comp2></my-comp2>
+</div>
+<script>
+    const myButton = {
+        methods: {
+            pressed: function(val){
+                alert(val);
+            }
+        },
+        data: function(){
+            return {
+                item: ''
+            }
+        }
+    }
+
+    const comp1 = {
+        template: `<div>
+            <h1>Enter Email</h1>
+            <form>
+                <div>
+                    <input v-model="item" type="email" placeholder="Email adress">
+                </div>
+                <div>
+                    <button @click.prevent="pressed(item)">Press Button 1</button>
+                </div>
+            </form>
+        </div>`,
+        mixins: [myButton]
+    }
+    
+    const comp2 = {
+        template: `<div>
+            <h1>Enter Number</h1>
+            <form>
+                <div>
+                    <input v-model="item" type="tel" placeholder="Phone adress">
+                </div>
+                <div>
+                    <button @click.prevent="pressed(item)">Press Button 1</button>
+                </div>
+            </form>
+        </div>`,
+        mixins: [myButton]
+    }
+
+
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            title: 'Sample mixin'
+        },
+        components: {
+            "my-comp1": comp1,
+            "my-comp2": comp2
+        }
+    });
+</script>
+</body>
+</html>

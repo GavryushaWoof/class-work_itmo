@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <my-if-for v-bind:items="arr"></my-if-for>
+</div>
+<script>
+    Vue.component('my-if-for', {
+        props: ['items'],
+        render: function (createElement) {
+            if (this.items.length) {
+                return createElement('ul', this.items.map(function (item) {
+                    return createElement('li', item)
+                }));
+            } else {
+                return createElement('p', 'Ничего не найдено.');
+            }
+        }
+    })
+
+
+    new Vue({
+      el: '#app',
+      data: {
+        arr: ['Элемент 1', 'Элемент 3', 'Элемент 2']
+      }
+    })
+</script>
+</body>
+</html>

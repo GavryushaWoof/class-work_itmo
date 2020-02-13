@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .text-center {
+            text-align: center;
+        }
+        .text-left {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p v-style-me:[text_align].large="'red'">{{welcome}}</p>
+    <div v-style-me.small>Hi everybody</div>
+</div>
+<script>
+    Vue.directive('style-me', {
+        bind: function (el, binding, vnode, oldVnode) {
+            el.style.color = binding.value || "blue";
+            
+            if(binding.modifiers.large)
+                el.style.fontSize = "42px";
+            else if (binding.modifiers.small)
+                el.style.fontSize = "17px";
+            
+            el.className = binding.arg;
+        }    
+    });
+    
+    const app = new Vue({
+        el: '#app',
+        data: function(){
+            return {
+                welcome: 'Hello world',
+                text_align: 'text-left'
+            };
+        }
+    });    
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <myselect v-bind:value="option.value" @select="select"></myselect>
+  {{option}}
+</div>
+<script>
+    Vue.component('myselect', {
+      props: ['value'],
+      render: function(createElement) {
+        let self = this;
+        return createElement(
+          'select', {
+            domProps: {
+              value: self.value
+            },
+            on: {
+              input: function(event) {
+                self.$emit('select', event.target.value);
+              }
+            }
+          }, [
+            createElement('option', {
+              attrs: {
+                value: 0
+              }
+            }, 'Вариант 1'),
+            createElement('option', {
+              attrs: {
+                value: 1
+              }
+            }, 'Вариант 2'),
+          ]
+        )
+      },
+    })
+
+
+    new Vue({
+      el: '#app',
+      data: {
+        option: {
+          value: 1
+        }
+      },
+      methods: {
+        select: function(value){
+            this.option.value = value;
+        }
+      }
+    })
+</script>
+</body>
+</html>

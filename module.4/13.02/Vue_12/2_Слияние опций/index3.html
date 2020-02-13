@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script>
+    const mixin = {
+      methods: {
+        foo: function () {
+          console.log('foo')
+        },
+        conflicting: function () {
+          console.log('из примеси')
+        }
+      }
+    }
+
+    const vm = new Vue({
+      mixins: [mixin],
+      methods: {
+        bar: function () {
+          console.log('bar')
+        },
+        conflicting: function () {
+          console.log('из самого компонента')
+        }
+      }
+    })
+
+    vm.foo() // => "foo"
+    vm.bar() // => "bar"
+    vm.conflicting() // => "из самого компонента"
+</script>
+</body>
+</html>

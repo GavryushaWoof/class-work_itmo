@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script>
+    const mixin = {
+      created: function () {
+        console.log('вызван хук примеси')
+      }
+    };
+
+    new Vue({
+      mixins: [mixin],
+      created: function () {
+        console.log('вызван хук компонента')
+      }
+    });
+</script>
+</body>
+</html>

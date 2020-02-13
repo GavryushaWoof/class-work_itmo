@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p v-style-me>{{welcome}}</p>
+</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: function(){
+            return {
+                welcome: 'Hello world'
+            };
+        },
+        directives: {
+            'style-me': {
+                // определение директивы
+                bind: function (el, binding, vnode, oldVnode) {
+                    el.style.color = "blue";
+                    el.style.fontSize = "42px";
+                    el.className = "text-center";
+                }
+            }
+        }
+    });    
+</script>
+</body>
+</html>

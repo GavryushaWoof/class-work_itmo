@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input v-focus>
+</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+        directives: {
+            focus: {
+                // определение директивы
+                inserted: function (el) {
+                    el.focus()
+                }
+            }
+        }
+    });    
+</script>
+</body>
+</html>

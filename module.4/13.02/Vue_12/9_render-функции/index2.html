@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <anchored-heading :level="1">Привет, мир!</anchored-heading>
+</div>
+<script>
+    Vue.component('anchored-heading', {
+        render: function (createElement) {
+            return createElement(
+                'h' + this.level,   // имя тега
+                this.$slots.default // массив дочерних элементов
+            )
+        },
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    })
+    
+    const app = new Vue({
+        el: '#app'
+    });    
+</script>
+</body>
+</html>

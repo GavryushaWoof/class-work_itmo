@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <anchored-heading :level="1">Привет, мир!</anchored-heading>
+</div>
+<script>
+    Vue.component('anchored-heading', {
+        template: `<div>
+                <h1 v-if="level === 1">
+                    <slot></slot>
+                </h1>
+                <h2 v-if="level === 2">
+                    <slot></slot>
+                </h2>
+                <h3 v-if="level === 3">
+                    <slot></slot>
+                </h3>
+                <h4 v-if="level === 4">
+                    <slot></slot>
+                </h4>
+                <h5 v-if="level === 5">
+                    <slot></slot>
+                </h5>
+                <h6 v-if="level === 6">
+                    <slot></slot>
+                </h6>
+            </div>`,
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    })
+    
+    const app = new Vue({
+        el: '#app'
+    });    
+</script>
+</body>
+</html>
