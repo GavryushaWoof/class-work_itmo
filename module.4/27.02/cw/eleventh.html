@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1>Один файл</h1>
+    <script>
+        function asyncFunc(resolve, reject) {
+            resolve({
+                a: 1
+            });
+        }
+
+        let promise = new Promise(asyncFunc);
+        console.dir(promise);
+
+        promise
+            .then(function(data) {
+                console.log('Успех 1!', data);
+                return new Promise(asyncFunc);
+            })
+            .then(function(data) {
+                console.log('Успех 2!', data);
+                throw new Error('Error2');
+            })
+            .then(function(data) {
+                console.log('Успех 3!', data);
+            })
+            .catch(function(err) {
+                console.log('Ошибка!', err);
+            });
+
+        Promise.resolve('asd').then(function(data) {
+            console.log('!!!', data);
+        });
+
+        let arr = [1, 2, 3];
+        let arr2 = arr.map(function(el) {
+            return el.toString();
+        });
+        console.log(arr2);
+
+        fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+            .then(response => response.json())
+            .then(commits => alert(commits[0].author.login));
+    </script>
+</body>
+
+</html>
